@@ -39,6 +39,7 @@ jobs:
             **/node_modules/**
             .github/**
             readme.md
+            .editorconfig
 
   test_job_main:
     if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
