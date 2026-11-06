@@ -52,7 +52,6 @@ jobs:
           password: ${{secrets.FTP_PWD}}
           server-dir: /
           log-level: verbose
-          dry-run: true
           exclude: |
             **/.git*
             **/.git*/**
