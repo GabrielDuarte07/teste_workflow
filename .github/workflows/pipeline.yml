@@ -20,6 +20,7 @@ jobs:
         echo "path $(pwd)"
         echo "${{github.head_ref}}"
         echo "${{github.ref_name}}"
+        echo "${{env.BRANCH_NAME}}"
 
   test_job_develop:
     if: github.env.BRANCH_NAME == 'develop'
