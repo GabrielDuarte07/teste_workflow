@@ -19,9 +19,9 @@ jobs:
         echo "${{github.ref_name}}"
 
   test_job_develop:
-    if: github.ref_name == 'develop'
+    if: github.ref == 'refs/heads/develop' || github.base_ref == 'develop'
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: test step only develop
       run: |
@@ -29,9 +29,9 @@ jobs:
         whoami
 
   test_job_main:
-    if: github.ref_name == 'main'
+    if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: test step only main
       run: |
