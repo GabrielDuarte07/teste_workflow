@@ -32,7 +32,7 @@ jobs:
           username: ${{secrets.FTP_USER_ATLETAS}}
           password: ${{secrets.FTP_PWD_ATLETAS}}
           local-dir: ./
-          server-dir: www/
+          server-dir: /
           exclude: |
             **/.git*
             **/.git*/**
