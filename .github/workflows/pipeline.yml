@@ -1,0 +1,22 @@
+name: primeio workflow de teste
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main,develop]
+  workflow_dispatch:
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: check github variables
+      run: |
+        echo "path $(pwd)"
+        echo "${{github.head_ref}}"
+        echo "${{github.ref_name}}"
+
+
+
