@@ -9,7 +9,7 @@ on:
 
 jobs:
   test_job:
-    runs-on: wiubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: check github variables
@@ -17,6 +17,28 @@ jobs:
         echo "path $(pwd)"
         echo "${{github.head_ref}}"
         echo "${{github.ref_name}}"
+
+  test_job_develop:
+    if: github.ref_name == 'develop'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: test step only develop
+      run: |
+        ls -la
+        whoami
+
+  test_job_main:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: test step only main
+      run: |
+        echo "branch main: ${{github.ref_name}}"
+        echo "teste de arquivo texto" > teste.txt
+        echo "segunda linha de teste" >> teste.txt
+
 
 
 
