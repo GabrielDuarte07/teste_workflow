@@ -23,7 +23,7 @@ jobs:
         echo "${{env.BRANCH_NAME}}"
 
   test_job_develop:
-    if: vars.BRANCH_NAME == 'develop'
+    if: github.env.BRANCH_NAME == 'develop'
     runs-on: ubuntu-latest
 
     steps:
