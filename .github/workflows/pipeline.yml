@@ -33,6 +33,7 @@ jobs:
           password: ${{secrets.FTP_PWD_ATLETAS}}
           server-dir: ./www/
           log-level: verbose
+          protocol: ftps
           exclude: |
             **/.git*
             **/.git*/**
