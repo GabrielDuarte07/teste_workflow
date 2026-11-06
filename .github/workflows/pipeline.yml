@@ -33,7 +33,7 @@ jobs:
           password: ${{secrets.FTP_PWD_ATLETAS}}
           remote_path: /home/novaequipe/
           sftp_only: true
-          sftpArgs: '-o AddressFamily=inet -o ConnectTimeout=10'
+          sftpArgs: '-o AddressFamily=inet'
           rsyncArgs: "--exclude=**/.git* --exclude=**/.git*/** --exclude=.github/** --exclude=readme.md --exclude=.editorconfig"
 
   # test_job_develop:
