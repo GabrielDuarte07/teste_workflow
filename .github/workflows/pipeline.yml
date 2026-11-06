@@ -1,10 +1,8 @@
 name: primeio workflow de teste
 
 on:
-  push:
-    branches: [develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
   workflow_dispatch:
 
 jobs:
