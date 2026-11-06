@@ -19,12 +19,26 @@ jobs:
   test_job_develop:
     if: github.ref == 'refs/heads/develop' || github.base_ref == 'develop'
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
-    - name: test step only develop
-      run: |
-        ls -la
-        whoami
+      - name: Download the codebase
+        uses: actions/checkout@v4
+
+      - name: send files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{secrets.FTP_HOST}}
+          username: ${{secrets.FTP_USER}}
+          password: ${{secrets.FTP_PWD}}
+          local-dir: ./
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            readme.md
 
   test_job_main:
     if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
