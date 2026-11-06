@@ -7,6 +7,9 @@ on:
     branches: [main,develop]
   workflow_dispatch:
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 jobs:
   test_job:
     runs-on: ubuntu-latest
@@ -19,9 +22,9 @@ jobs:
         echo "${{github.ref_name}}"
 
   test_job_develop:
-    if: github.ref_name == 'develop'
+    if: github.env.BRANCH_NAME == 'develop'
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: test step only develop
       run: |
@@ -29,9 +32,9 @@ jobs:
         whoami
 
   test_job_main:
-    if: github.ref_name == 'main'
+    if: github.env.BRANCH_NAME == 'main'
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: test step only main
       run: |
