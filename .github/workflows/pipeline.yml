@@ -47,10 +47,10 @@ jobs:
       - name: send files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: ${{secrets.FTP_HOST_ATLETAS}}
-          username: ${{secrets.FTP_USER_ATLETAS}}
-          password: ${{secrets.FTP_PWD_ATLETAS}}
-          server-dir: ./randomFolder/
+          server: ${{secrets.FTP_HOST}}
+          username: ${{secrets.FTP_USER}}
+          password: ${{secrets.FTP_PWD}}
+          server-dir: ./
           log-level: verbose
           exclude: |
             **/.git*
