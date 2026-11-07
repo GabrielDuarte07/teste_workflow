@@ -16,15 +16,49 @@ jobs:
         echo "${{github.head_ref}}"
         echo "${{github.ref_name}}"
 
+  # test_job_develop:
+  #   if: github.ref == 'refs/heads/develop' || github.base_ref == 'develop'
+  #   runs-on: ubuntu-latest
+  #   environment: development
+
+  #   steps:
+  #     - name: Download the codebase
+  #       uses: actions/checkout@v6
+
+  #     - name: send files via FTP
+  #       uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+  #       with:
+  #         server: ${{secrets.FTP_HOST_ATLETAS}}
+  #         username: ${{secrets.FTP_USER_ATLETAS}}
+  #         password: ${{secrets.FTP_PWD_ATLETAS}}
+  #         remote_path: /home/novaequipe/
+  #         sftpArgs: '-o AddressFamily=inet'
+  #         rsyncArgs: "--exclude=**/.git* --exclude=**/.git*/** --exclude=.github/** --exclude=readme.md --exclude=.editorconfig"
+
   test_job_develop:
     if: github.ref == 'refs/heads/develop' || github.base_ref == 'develop'
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
-    - name: test step only develop
-      run: |
-        ls -la
-        whoami
+      - name: Download the codebase
+        uses: actions/checkout@v6
+
+      - name: send files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{secrets.FTP_HOST}}
+          username: ${{secrets.FTP_USER}}
+          password: ${{secrets.FTP_PWD}}
+          server-dir: ./
+          log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            readme.md
+            .editorconfig
 
   test_job_main:
     if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
