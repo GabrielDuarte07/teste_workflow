@@ -50,7 +50,7 @@ jobs:
           server: ${{secrets.FTP_HOST_ATLETAS}}
           username: ${{secrets.FTP_USER_ATLETAS}}
           password: ${{secrets.FTP_PWD_ATLETAS}}
-          server-dir: /www
+          server-dir: /
           log-level: verbose
           exclude: |
             **/.git*
