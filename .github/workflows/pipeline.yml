@@ -33,11 +33,6 @@ jobs:
             .editorconfig
             .claude/
 
-      - name: Install php
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.5.12'
-
   test_job_main:
     if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
     runs-on: ubuntu-latest
